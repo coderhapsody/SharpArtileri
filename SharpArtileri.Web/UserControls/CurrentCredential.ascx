@@ -1,0 +1,2 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="CurrentCredential.ascx.cs" Inherits="SharpArtileri.Web.UserControls.CurrentCredential" %>
+<asp:Label runat="server" ID="lblCurrentUserName" EnableViewState="False" ToolTip="Current user"></asp:Label>

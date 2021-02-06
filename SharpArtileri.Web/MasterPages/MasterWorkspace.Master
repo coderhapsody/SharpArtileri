@@ -1,0 +1,96 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterWorkspace.master.cs" Inherits="VIPDC.Web.MasterPages.MasterWorkspace" %>
+
+<%@ Register TagPrefix="vipdc" Namespace="SharpArtileri.Web.UserControls" Assembly="SharpArtileri.Web" %>
+<%@ Import Namespace="SharpArtileri.Services" %>
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Purchasing Controller
+    </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta http-equiv="Software Architect" content="Paulus Iman" />
+    <meta http-equiv="Author" content="Stark Technology" />
+    <link rel="stylesheet" href="~/Styles/Default.css" type="text/css" />
+    <link rel="stylesheet" href="~/Styles/LightStyle.css" type="text/css" />
+
+    <asp:ContentPlaceHolder ID="cphHead" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body class="igt">
+    <div class="wrapper">
+        <form method="post" id="theForm" name="theForm" runat="server">
+            <telerik:RadScriptManager ID="RadScriptManager1" runat="server">
+                <Scripts>
+                    <asp:ScriptReference Assembly="Telerik.Web.UI" Name="Telerik.Web.UI.Common.Core.js" />
+                    <asp:ScriptReference Assembly="Telerik.Web.UI" Name="Telerik.Web.UI.Common.jQuery.js" />
+                    <asp:ScriptReference Assembly="Telerik.Web.UI" Name="Telerik.Web.UI.Common.jQueryInclude.js" />
+                    <asp:ScriptReference Path="~/Scripts/Utils.js" />
+                    <asp:ScriptReference Path="~/Scripts/moment.js" />
+                    <asp:ScriptReference Path="~/Scripts/startup.js" />
+                </Scripts>
+            </telerik:RadScriptManager>
+            <div id="container">
+                <div id="header">
+                    <table style="width: 100%;">
+                        <tr>
+                            <td>
+                                <div id="apptitle">
+                                    <span id="maintitle">
+                                        <%= ConfigurationManager.AppSettings[ApplicationSettingKeys.ApplicationTitle] %>
+                                    </span>
+                                    <br />
+                                    Version
+                                <%= ConfigurationManager.AppSettings[ApplicationSettingKeys.VersionNumber] %>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="mainSubHeader">
+                    <table border="0" width="100%">
+                        <tr>
+                            <td>
+                                <artileri:ApplicationMenu ID="ArtileriApplicationMenu" runat="server" />
+                            </td>
+                            <td style="text-align: right;"><%--Current User: --%><strong>
+                                <artileri:CurrentCredential ID="ArtileriCurrentCredential" runat="server"  />
+                                &nbsp;@&nbsp;
+                                <artileri:CurrentActiveCompany ID="ArtileriCurrentActiveCompany" runat="server" />
+                            </strong>
+                            </td>
+                            <td style="text-align: right; width: 400px;">
+                                <span title="Current date">
+                                    <%= DateTime.Now.ToString("dddd, dd MMMM yyyy") %></span> &nbsp;&nbsp;&nbsp;&nbsp;
+                            <span id="clock" title="Current time"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <asp:LoginStatus ID="lgsLoginStatus" runat="server" ToolTip="Ends current session and back to login page"
+                                onclick="return confirm('Are you sure want to exit ?')"
+                                LogoutAction="RedirectToLoginPage" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <br />
+                <div id="mainContent">
+                    <div class="titleMed">
+                        <asp:ContentPlaceHolder ID="cphMainTitle" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                    <br />
+                    <br />
+                    <asp:ContentPlaceHolder ID="cphMainContent" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+
+</body>
+</html>

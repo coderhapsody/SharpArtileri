@@ -1,0 +1,2 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="CurrentActiveCompany.ascx.cs" Inherits="SharpArtileri.Web.UserControls.CurrentActiveCompany" %>
+<asp:Label ID="lblCurrentActiveCompany" runat="server" EnableViewState="false" ToolTip="Current active company" />
